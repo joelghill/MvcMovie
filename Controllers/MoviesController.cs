@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
 using MvcMovie.Data;
@@ -65,6 +66,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -75,6 +77,7 @@ namespace MvcMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
             if (ModelState.IsValid)
@@ -87,6 +90,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Movie == null)
