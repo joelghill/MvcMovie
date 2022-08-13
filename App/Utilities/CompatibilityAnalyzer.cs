@@ -29,6 +29,7 @@ public class CompatibilityAnalyzer
     }
 
     public double GetCompatibility(string personOne, string personTwo) {
+        
         var points1 = this.GetPoints(personOne);
         var points2 = this.GetPoints(personTwo);
 
